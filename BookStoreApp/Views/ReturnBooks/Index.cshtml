@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BookStoreApp.Models.Entities.ReturnBook>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IssueBookId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofReturn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IssueBookId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofReturn)
+        </td>
+        <td>
+            <a href="~/ReturnBooks/Update/@item.IssueBookId">Edit</a>
+            <a href="~/ReturnBooks/Delete/@item.IssueBookId">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

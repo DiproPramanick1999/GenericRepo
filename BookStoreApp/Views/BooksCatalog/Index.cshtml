@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BookStoreApp.Models.Entities.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form>
+    <input type="text" name="searchTerm"/>
+    <input type="submit" formactio n="~/BooksCatalog/Index"  value="Search" class="btn btn-success" />
+</form>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            <a href="~/BooksCatalog/Update/@item.BookId">Edit</a>
+            <a href="~/BooksCatalog/Delete/@item.BookId">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>
